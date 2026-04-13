@@ -1,0 +1,36 @@
+**Role:** You are an Expert Full-Stack Developer specializing in Next.js, Tailwind CSS, and modern web architecture. 
+
+**Objective:** Write the complete code and step-by-step setup instructions for a dynamic, full-stack portfolio website for a Web and Graphic Designer named David. The project must include a pixel-perfect public-facing portfolio, dynamic case study pages, and a secure backend admin dashboard for content management.
+
+**Tech Stack:**
+* **Framework:** Next.js (App Router)
+* **Styling:** Tailwind CSS + Framer Motion (for smooth micro-interactions, page transitions, and lightbox effects)
+* **Authentication:** NextAuth.js (credentials provider for a single, secure admin login)
+* **Database:** Prisma ORM with MongoDB
+* **Media Storage:** Cloudinary (for uploading and serving optimized images)
+* **Deployment:** Vercel
+
+**Phase 1: Frontend UI/UX (Public Site)**
+* **Hero Section:** Replicate a minimalist dark theme. The background must be solid black (`#000000`). 
+* **Typography:** Use an elegant serif font (like Playfair Display) for the main headline: "Welcome to My Design Portfolio". Use a clean sans-serif font (like Inter or Geist) for the subtext "David" and a small call-to-action "Work with me today" accompanied by a minimalist curved arrow pointing to it.
+* **Image Treatment:** Include a profile image on the right side. The image must be masked into a vertical oval/ellipse shape, exactly like a classic portrait frame. Ensure the layout is fully responsive (stacking smoothly on mobile).
+* **Proof of Work Gallery:** Display projects using a responsive CSS Masonry layout so images of different aspect ratios fit together seamlessly. Clicking any image should open a Framer Motion lightbox modal so clients can zoom in on the high-resolution details.
+* **Dynamic Project Pages:** Create a dynamic route (`/projects/[slug]`) for deep-dive case studies. This page should display the project title, client name, a rich text description of the design problem/solution, and a full gallery of associated images.
+
+**Phase 2: Backend & Admin Dashboard**
+* **Secure Route:** Create an `/admin` route strictly protected by NextAuth middleware.
+* **Cloudinary Integration:** Implement a multi-image upload component in the admin panel using the Cloudinary upload widget. 
+* **Prisma Schema:** Create a `Project` model with the following fields: `title`, `slug`, `description` (long text), `client`, `categories` (array of strings, default options: "UI/UX Design", "Brand Identity", "Web Development", "Marketing Graphics"), `thumbnailUrl`, and `galleryUrls` (array of strings for multiple images).
+* **CRUD Operations:** Build a clean admin interface with forms to Add, Edit, and Delete these rich portfolio projects.
+
+**Phase 3: Delivery Requirements**
+Please provide the following in your response:
+1.  The complete project directory structure.
+3.  The exact `.env.local` variables I need to set up (MongoDB URI, NextAuth Secret, Cloudinary keys).
+4.  The Prisma `schema.prisma` file.
+5.  Core code files: The Hero component, the Masonry Gallery component, the Admin layout, and the API routes for Cloudinary and authentication.
+6.  A step-by-step guide on how to deploy this full-stack repository to Vercel.
+
+***
+
+DON'T DO ANY INSTALLATION ON MY LOCAL PC OK ? I WARN YOU VERY WELL
