@@ -22,5 +22,18 @@ export const authOptions: NextAuthOptions = {
     ],
     session: {
         strategy: "jwt"
+    },
+    callbacks: {
+        async redirect({ url, baseUrl }) {
+            // If the url starts with the base, allow it (this handles callbackUrl)
+            if (url.startsWith(baseUrl)) return url;
+            // If it's a relative path, prepend base
+            if (url.startsWith("/")) return `${baseUrl}${url}`;
+            // Default: go to admin
+            return `${baseUrl}/admin`;
+        }
+    },
+    pages: {
+        signIn: "/api/auth/signin",
     }
 };
