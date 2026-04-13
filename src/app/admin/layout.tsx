@@ -7,9 +7,8 @@ export default async function AdminLayout({ children }: { children: ReactNode })
     const session = await getServerSession(authOptions);
 
     if (!session) {
-        // Note: since this is a basic setup, you might not have a signin page ready, 
-        // but NextAuth provides a default one at /api/auth/signin
-        redirect("/api/auth/signin");
+        // Explicitly set the callbackUrl so NextAuth knows exactly where to send them
+        redirect("/api/auth/signin?callbackUrl=/admin");
     }
 
     return (
