@@ -7,8 +7,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
     const session = await getServerSession(authOptions);
 
     if (!session) {
-        // Explicitly set the callbackUrl so NextAuth knows exactly where to send them
-        redirect("/api/auth/signin?callbackUrl=/admin");
+        redirect("/login");
     }
 
     return (
@@ -18,7 +17,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
                 <h2 className="text-xl font-bold mb-8">Admin Dashboard</h2>
                 <nav className="flex-1 space-y-4">
                     <a href="/admin" className="block text-gray-400 hover:text-white">Projects</a>
-                    <a href="/admin/settings" className="block text-gray-400 hover:text-white">Settings</a>
+                    <a href="/admin/new" className="block text-gray-400 hover:text-white">Add New</a>
                 </nav>
                 <a href="/api/auth/signout" className="text-red-500 hover:text-red-400">Logout</a>
             </aside>
