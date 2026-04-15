@@ -2,7 +2,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function Hero() {
+type SettingsProps = {
+    name: string;
+    headline: string;
+    subtext: string;
+    profileImage: string;
+};
+
+export default function Hero({ settings }: { settings: SettingsProps }) {
     return (
         <section className="min-h-screen bg-black flex flex-col md:flex-row items-center justify-between px-8 py-20 lg:px-24">
             {/* Text Content */}
@@ -13,14 +20,14 @@ export default function Hero() {
                 className="flex-1 space-y-6"
             >
                 <p className="text-gray-400 font-sans tracking-widest uppercase text-sm">
-                    David
+                    {settings.name}
                 </p>
-                <h1 className="text-5xl md:text-7xl text-white font-serif tracking-tight leading-tight">
-                    Welcome to My<br />Design Portfolio
+                <h1 className="text-5xl md:text-7xl text-white font-serif tracking-tight leading-tight whitespace-pre-line">
+                    {settings.headline}
                 </h1>
                 <div className="flex items-center space-x-4 pt-6">
                     <p className="text-gray-300 font-sans text-sm md:text-base">
-                        Work with me today
+                        {settings.subtext}
                     </p>
                     {/* Minimalist Curved Arrow */}
                     <motion.svg
@@ -60,8 +67,8 @@ export default function Hero() {
             >
                 <div className="relative w-64 h-80 md:w-80 md:h-[28rem] overflow-hidden rounded-[50%] border border-gray-800 shadow-2xl">
                     <Image
-                        src="/images/profile.jpg"
-                        alt="David - Web and Graphic Designer"
+                        src={settings.profileImage}
+                        alt={`${settings.name} - Profile`}
                         fill
                         className="object-cover"
                         priority

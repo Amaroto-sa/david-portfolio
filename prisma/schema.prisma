@@ -20,3 +20,12 @@ model Project {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+
+model SiteSettings {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String   @default("David")
+  headline     String   @default("Welcome to My\nDesign Portfolio")
+  subtext      String   @default("Work with me today")
+  profileImage String   @default("/images/profile.jpg")
+  updatedAt    DateTime @updatedAt
+}

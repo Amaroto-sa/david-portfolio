@@ -1,5 +1,6 @@
 import { getProjects, deleteProject } from "@/actions/projects";
 import Link from "next/link";
+import DeleteButton from "@/components/DeleteButton";
 
 export default async function AdminDashboard() {
     const projects = await getProjects();
@@ -73,16 +74,9 @@ export default async function AdminDashboard() {
                                                 <Link href={`/admin/edit/${project.id}`} className="text-blue-400 hover:text-blue-300 text-sm">
                                                     Edit
                                                 </Link>
-                                                <form action={handleDelete} onSubmit={(e) => {
-                                                    // This attribute tells the browser to confirm before submitting
-                                                }}>
+                                                <form action={handleDelete}>
                                                     <input type="hidden" name="id" value={project.id} />
-                                                    <button
-                                                        type="submit"
-                                                        className="text-red-500 hover:text-red-400 text-sm"
-                                                    >
-                                                        Delete
-                                                    </button>
+                                                    <DeleteButton />
                                                 </form>
                                             </div>
                                         </td>

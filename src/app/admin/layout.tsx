@@ -23,6 +23,9 @@ export default async function AdminLayout({ children }: { children: ReactNode })
                     <a href="/admin/new" className="block text-gray-400 hover:text-white transition">
                         ➕ Add New
                     </a>
+                    <a href="/admin/settings" className="block text-gray-400 hover:text-white transition">
+                        ⚙️ Profile Settings
+                    </a>
                     <hr className="border-gray-800 my-3" />
                     <a href="/" target="_blank" className="block text-gray-400 hover:text-white transition">
                         🌐 View Live Site
