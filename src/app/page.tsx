@@ -6,6 +6,7 @@ import CtaSection from "../components/CtaSection";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import SkillsMarquee from "../components/SkillsMarquee";
 import Testimonials from "../components/Testimonials";
+import ContactForm from "../components/ContactForm";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
 
@@ -31,6 +32,7 @@ export default async function Home() {
 
             <Testimonials />
             <WhyChooseMe />
+            <ContactForm />
             <CtaSection whatsappNumber={settings.whatsappNumber} />
 
             <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />

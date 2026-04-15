@@ -30,3 +30,11 @@ model SiteSettings {
   whatsappNumber String   @default("+2349045729555")
   updatedAt      DateTime @updatedAt
 }
+
+model Inquiry {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
