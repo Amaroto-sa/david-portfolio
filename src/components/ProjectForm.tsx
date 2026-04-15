@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { createProject, updateProject } from "@/actions/projects";
 
@@ -21,20 +21,47 @@ type ProjectFormProps = {
 export default function ProjectForm({ mode = "create", projectId, initialData }: ProjectFormProps) {
     const [galleryUrls, setGalleryUrls] = useState<string[]>(initialData?.galleryUrls || []);
     const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(initialData?.thumbnailUrl || null);
+    const [slug, setSlug] = useState(initialData?.slug || "");
+    const [isPending, startTransition] = useTransition();
+
+    // Auto-generate slug from title
+    function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        if (mode === "create") {
+            const autoSlug = e.target.value
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-")
+                .trim();
+            setSlug(autoSlug);
+        }
+    }
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
 
-        if (mode === "edit" && projectId) {
-            await updateProject(projectId, formData, galleryUrls, thumbnailUrl);
-        } else {
-            await createProject(formData, galleryUrls, thumbnailUrl);
-        }
+        startTransition(async () => {
+            if (mode === "edit" && projectId) {
+                await updateProject(projectId, formData, galleryUrls, thumbnailUrl);
+            } else {
+                await createProject(formData, galleryUrls, thumbnailUrl);
+            }
+        });
     }
 
     function removeImage(index: number) {
+        const removedUrl = galleryUrls[index];
         setGalleryUrls(prev => prev.filter((_, i) => i !== index));
+        // If we removed the thumbnail, reset it
+        if (removedUrl === thumbnailUrl) {
+            const remaining = galleryUrls.filter((_, i) => i !== index);
+            setThumbnailUrl(remaining.length > 0 ? remaining[0] : null);
+        }
+    }
+
+    function selectThumbnail(url: string) {
+        setThumbnailUrl(url);
     }
 
     return (
@@ -45,17 +72,19 @@ export default function ProjectForm({ mode = "create", projectId, initialData }:
                     name="title"
                     required
                     defaultValue={initialData?.title || ""}
+                    onChange={handleTitleChange}
                     className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
                     placeholder="Awesome Branding"
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Slug (URL)</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Slug (URL) — auto-generated from title</label>
                 <input
                     name="slug"
                     required
-                    defaultValue={initialData?.slug || ""}
+                    value={slug}
+                    onChange={(e) => setSlug(e.target.value)}
                     className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
                     placeholder="awesome-branding"
                 />
@@ -114,25 +143,41 @@ export default function ProjectForm({ mode = "create", projectId, initialData }:
                 </CldUploadWidget>
 
                 {galleryUrls.length > 0 && (
-                    <div className="flex gap-2 mt-4 flex-wrap">
-                        {galleryUrls.map((url, i) => (
-                            <div key={i} className="relative group">
-                                <img src={url} alt="upload" className="w-24 h-24 object-cover rounded border border-gray-700" />
-                                <button
-                                    type="button"
-                                    onClick={() => removeImage(i)}
-                                    className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+                    <div className="mt-4">
+                        <p className="text-xs text-gray-500 mb-2">Click an image to set it as the thumbnail (highlighted in green)</p>
+                        <div className="flex gap-2 flex-wrap">
+                            {galleryUrls.map((url, i) => (
+                                <div
+                                    key={i}
+                                    className={`relative group cursor-pointer rounded border-2 ${url === thumbnailUrl ? "border-green-500" : "border-gray-700"}`}
+                                    onClick={() => selectThumbnail(url)}
                                 >
-                                    ×
-                                </button>
-                            </div>
-                        ))}
+                                    <img src={url} alt="upload" className="w-24 h-24 object-cover rounded" />
+                                    {url === thumbnailUrl && (
+                                        <div className="absolute bottom-0 left-0 right-0 bg-green-500 text-black text-[10px] text-center font-bold py-0.5">
+                                            THUMBNAIL
+                                        </div>
+                                    )}
+                                    <button
+                                        type="button"
+                                        onClick={(e) => { e.stopPropagation(); removeImage(i); }}
+                                        className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>
 
-            <button type="submit" className="w-full bg-white text-black font-bold py-3 rounded mt-6 hover:bg-gray-200 transition">
-                {mode === "edit" ? "Update Project" : "Save Project"}
+            <button
+                type="submit"
+                disabled={isPending}
+                className="w-full bg-white text-black font-bold py-3 rounded mt-6 hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                {isPending ? "Saving..." : mode === "edit" ? "Update Project" : "Save Project"}
             </button>
         </form>
     );
