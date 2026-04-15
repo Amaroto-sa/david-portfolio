@@ -22,10 +22,11 @@ model Project {
 }
 
 model SiteSettings {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  name         String   @default("David")
-  headline     String   @default("Welcome to My\nDesign Portfolio")
-  subtext      String   @default("Work with me today")
-  profileImage String   @default("/images/profile.jpg")
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String   @default("David Caleb")
+  headline       String   @default("Welcome to My\nDesign Portfolio")
+  subtext        String   @default("Work with me today")
+  profileImage   String   @default("/images/profile.jpg")
+  whatsappNumber String   @default("+2349045729555")
+  updatedAt      DateTime @updatedAt
 }

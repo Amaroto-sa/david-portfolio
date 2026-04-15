@@ -10,10 +10,11 @@ export async function getSiteSettings() {
     if (!settings) {
         settings = await prisma.siteSettings.create({
             data: {
-                name: "David",
+                name: "David Caleb",
                 headline: "Welcome to My\nDesign Portfolio",
                 subtext: "Work with me today",
-                profileImage: "/images/profile.jpg"
+                profileImage: "/images/profile.jpg",
+                whatsappNumber: "+2349045729555"
             }
         });
     }
@@ -26,6 +27,7 @@ export async function updateSiteSettings(formData: FormData, profileImage: strin
     const name = formData.get("name") as string;
     const headline = formData.get("headline") as string;
     const subtext = formData.get("subtext") as string;
+    const whatsappNumber = formData.get("whatsappNumber") as string;
 
     await prisma.siteSettings.update({
         where: { id },
@@ -33,6 +35,7 @@ export async function updateSiteSettings(formData: FormData, profileImage: strin
             name,
             headline,
             subtext,
+            whatsappNumber,
             profileImage
         }
     });

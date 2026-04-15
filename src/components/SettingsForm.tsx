@@ -11,6 +11,7 @@ type SettingsFormProps = {
         headline: string;
         subtext: string;
         profileImage: string;
+        whatsappNumber: string;
     };
 };
 
@@ -61,6 +62,17 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
                     required
                     defaultValue={settings.subtext}
                     className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
+                />
+            </div>
+
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp Number (For Floating Button)</label>
+                <input
+                    name="whatsappNumber"
+                    required
+                    defaultValue={settings.whatsappNumber}
+                    className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
+                    placeholder="+2349045729555"
                 />
             </div>
 
