@@ -127,8 +127,7 @@ export default function ProjectForm({ mode = "create", projectId, initialData }:
             <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Upload Images</label>
                 <CldUploadWidget
-                    uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-                    signatureEndpoint="/api/upload"
+                    uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "ml_default"}
                     onSuccess={(result) => {
                         if (typeof result.info === 'object' && result.info !== null && 'secure_url' in result.info) {
                             const url = result.info.secure_url as string;
