@@ -15,6 +15,8 @@ type ProjectFormProps = {
         categories: string[];
         thumbnailUrl: string | null;
         galleryUrls: string[];
+        isPublished?: boolean;
+        isFeatured?: boolean;
     };
 };
 
@@ -170,6 +172,28 @@ export default function ProjectForm({ mode = "create", projectId, initialData }:
                         </div>
                     </div>
                 )}
+            </div>
+
+            <div className="flex space-x-8">
+                <label className="flex items-center space-x-2 text-sm text-gray-300">
+                    <input
+                        type="checkbox"
+                        name="isPublished"
+                        defaultChecked={initialData?.isPublished ?? true}
+                        className="w-4 h-4 text-green-500 focus:ring-green-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <span>Publish (Live to Public)</span>
+                </label>
+
+                <label className="flex items-center space-x-2 text-sm text-gray-300">
+                    <input
+                        type="checkbox"
+                        name="isFeatured"
+                        defaultChecked={initialData?.isFeatured ?? false}
+                        className="w-4 h-4 text-yellow-500 focus:ring-yellow-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <span>Featured (Pin to Top)</span>
+                </label>
             </div>
 
             <button

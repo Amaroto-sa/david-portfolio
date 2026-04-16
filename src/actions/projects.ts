@@ -10,6 +10,8 @@ export async function createProject(formData: FormData, galleryUrls: string[], t
     const description = formData.get("description") as string;
     const client = formData.get("client") as string;
     const categoriesRaw = formData.get("categories") as string;
+    const isPublished = formData.get("isPublished") === "on";
+    const isFeatured = formData.get("isFeatured") === "on";
 
     const categories = categoriesRaw ? categoriesRaw.split(",").map(c => c.trim()) : ["UI/UX Design"];
 
@@ -22,6 +24,8 @@ export async function createProject(formData: FormData, galleryUrls: string[], t
             categories,
             thumbnailUrl,
             galleryUrls,
+            isPublished,
+            isFeatured,
         },
     });
 
@@ -36,6 +40,8 @@ export async function updateProject(id: string, formData: FormData, galleryUrls:
     const description = formData.get("description") as string;
     const client = formData.get("client") as string;
     const categoriesRaw = formData.get("categories") as string;
+    const isPublished = formData.get("isPublished") === "on";
+    const isFeatured = formData.get("isFeatured") === "on";
 
     const categories = categoriesRaw ? categoriesRaw.split(",").map(c => c.trim()) : ["UI/UX Design"];
 
@@ -49,6 +55,8 @@ export async function updateProject(id: string, formData: FormData, galleryUrls:
             categories,
             thumbnailUrl,
             galleryUrls,
+            isPublished,
+            isFeatured,
         },
     });
 
@@ -57,9 +65,13 @@ export async function updateProject(id: string, formData: FormData, galleryUrls:
     redirect("/admin");
 }
 
-export async function getProjects() {
+export async function getProjects({ includeDrafts = true }: { includeDrafts?: boolean } = {}) {
     return await prisma.project.findMany({
-        orderBy: { createdAt: "desc" },
+        where: includeDrafts ? {} : { isPublished: true },
+        orderBy: [
+            { isFeatured: "desc" },
+            { createdAt: "desc" }
+        ],
     });
 }
 

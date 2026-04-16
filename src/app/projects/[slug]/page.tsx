@@ -1,7 +1,24 @@
+import type { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug } from "@/actions/projects";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const project = await getProjectBySlug(params.slug);
+
+    if (!project) return { title: 'Project Not Found' };
+
+    return {
+        title: `${project.title} | David Caleb Portfolio`,
+        description: project.description.substring(0, 160),
+        openGraph: {
+            title: project.title,
+            description: project.description.substring(0, 160),
+            images: project.thumbnailUrl ? [{ url: project.thumbnailUrl }] : project.galleryUrls.length > 0 ? [{ url: project.galleryUrls[0] }] : [],
+        },
+    };
+}
 
 export default async function ProjectDetail({ params }: { params: { slug: string } }) {
     const project = await getProjectBySlug(params.slug);

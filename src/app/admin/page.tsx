@@ -58,7 +58,13 @@ export default async function AdminDashboard() {
                             <tbody>
                                 {projects.map((project) => (
                                     <tr key={project.id} className="border-b border-gray-800 hover:bg-gray-900 transition">
-                                        <td className="py-3 px-4 font-medium">{project.title}</td>
+                                        <td className="py-3 px-4 font-medium">
+                                            {project.title}
+                                            <div className="flex space-x-2 mt-1 text-xs">
+                                                {project.isFeatured && <span className="bg-yellow-500/20 text-yellow-500 px-2 py-0.5 rounded font-bold">Featured</span>}
+                                                {project.isPublished ? <span className="bg-green-500/20 text-green-500 px-2 py-0.5 rounded">Live</span> : <span className="bg-red-500/20 text-red-500 px-2 py-0.5 rounded">Draft</span>}
+                                            </div>
+                                        </td>
                                         <td className="py-3 px-4 text-gray-400">{project.client || "N/A"}</td>
                                         <td className="py-3 px-4 text-gray-400">{project.galleryUrls.length}</td>
                                         <td className="py-3 px-4 text-gray-400">{new Date(project.createdAt).toLocaleDateString()}</td>

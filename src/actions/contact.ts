@@ -42,3 +42,18 @@ export async function getInquiries() {
         orderBy: { createdAt: "desc" }
     });
 }
+
+export async function deleteInquiry(id: string) {
+    await prisma.inquiry.delete({
+        where: { id }
+    });
+    revalidatePath("/admin/inquiries");
+}
+
+export async function markInquiryRead(id: string) {
+    await prisma.inquiry.update({
+        where: { id },
+        data: { isRead: true }
+    });
+    revalidatePath("/admin/inquiries");
+}
