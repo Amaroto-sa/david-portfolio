@@ -3,11 +3,9 @@
 import { motion } from "framer-motion";
 
 const services = [
-    { title: "Logo Design", desc: "Clean, modern, and professional logos that define your brand." },
-    { title: "Website Design", desc: "Mobile-friendly, lightning fast, and conversion-optimized websites." },
-    { title: "Business Branding", desc: "Cohesive visual identity that builds trust across all platforms." },
-    { title: "WhatsApp Business", desc: "Professional setup and catalog configuration to close deals." },
-    { title: "Digital Solutions", desc: "Custom digital strategies and tools designed for business growth." }
+    { title: "Website Design", desc: "Mobile-friendly, lightning-fast, and conversion-optimized websites that build trust." },
+    { title: "Landing Pages", desc: "High-converting single-page designs crafted specifically to turn your visitors into real customers." },
+    { title: "Logo & Branding", desc: "Clean, modern, and professional logos that define your brand identity and set you apart." }
 ];
 
 export default function ServicesSection() {

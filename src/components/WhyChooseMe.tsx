@@ -3,11 +3,10 @@
 import { motion } from "framer-motion";
 
 const reasons = [
-    "Clean & modern designs",
-    "Fast delivery (within 48 hours)",
-    "Mobile-friendly results",
-    "Focus on business growth",
-    "Easy communication"
+    "Fast delivery (24–72 hours)",
+    "Clean modern design",
+    "Affordable pricing",
+    "Mobile-friendly"
 ];
 
 export default function WhyChooseMe() {

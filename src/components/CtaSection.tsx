@@ -15,12 +15,11 @@ export default function CtaSection({ whatsappNumber }: { whatsappNumber: string 
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
-                        Ready to upgrade your business image?
+                    <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
+                        Ready to grow your business?
                     </h2>
                     <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                        Message me on WhatsApp to get started 👇🏽<br />
-                        <span className="text-gray-500 text-base mt-2 block">I can also create a quick preview for your business.</span>
+                        Chat me on WhatsApp now 👇🏽
                     </p>
 
                     <a

@@ -4,21 +4,9 @@ import { motion } from "framer-motion";
 
 const testimonials = [
     {
-        name: "Sarah Jenkins",
-        company: "Korosi Luxury Hotel",
-        text: "David completely transformed our visual identity. The logo and web design matched our luxury standards perfectly. Highly recommend!",
-        rating: 5
-    },
-    {
-        name: "Michael T.",
-        company: "Prime Real Estate",
-        text: "Fast, incredibly responsive, and he genuinely understood what we needed to attract high-end buyers. Very professional.",
-        rating: 5
-    },
-    {
-        name: "Jessica Law",
-        company: "Legal Solutions",
-        text: "We needed a corporate rebrand that didn't feel boring. David delivered an exceptional layout that built immediate trust.",
+        name: "Verified Client",
+        company: "Small Business Owner",
+        text: "Very clean design and fast delivery. Highly recommend.",
         rating: 5
     }
 ];

@@ -13,7 +13,54 @@ import { getSiteSettings } from "@/actions/settings";
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function Home() {
-    const projects = await getProjects();
+    let projects = await getProjects();
+
+    if (!projects || projects.length === 0) {
+        projects = [
+            {
+                id: "mock1",
+                title: "Barber Booking Website (Demo)",
+                slug: "barber-booking",
+                description: "A clean, modern scheduling platform for hair studios. Allows clients to easily book appointments online.",
+                client: "Demo",
+                categories: ["Website Design"],
+                thumbnailUrl: "https://images.unsplash.com/photo-1585747860715-ddc2a95c477a?q=80&w=1000&auto=format&fit=crop",
+                galleryUrls: [],
+                isPublished: true,
+                isFeatured: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                id: "mock2",
+                title: "Ultra Real Estate Website (Demo)",
+                slug: "ultra-real-estate",
+                description: "Premium property listing site. Showcases luxury homes with high-resolution image galleries and virtual tours.",
+                client: "Demo",
+                categories: ["Website Design"],
+                thumbnailUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop",
+                galleryUrls: [],
+                isPublished: true,
+                isFeatured: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                id: "mock3",
+                title: "Restaurant Landing Page (Concept)",
+                slug: "restaurant-concept",
+                description: "Mouth-watering, highly-converting single page for a local cafe. Features a digital menu and reservation CTA.",
+                client: "Concept",
+                categories: ["Landing Pages"],
+                thumbnailUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop",
+                galleryUrls: [],
+                isPublished: true,
+                isFeatured: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ];
+    }
     const settings = await getSiteSettings();
 
     return (

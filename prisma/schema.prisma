@@ -26,8 +26,8 @@ model Project {
 model SiteSettings {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   name           String   @default("David Caleb")
-  headline       String   @default("Welcome to My\nDesign Portfolio")
-  subtext        String   @default("Work with me today")
+  headline       String   @default("We build websites that bring real customers")
+  subtext        String   @default("I’m David Caleb, I help small businesses grow online with clean, modern websites")
   profileImage   String   @default("/images/profile.jpg")
   whatsappNumber String   @default("+2349045729555")
   updatedAt      DateTime @updatedAt
