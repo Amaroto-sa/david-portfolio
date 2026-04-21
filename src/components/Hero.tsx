@@ -10,9 +10,9 @@ type SettingsProps = {
     subtext: string;
     profileImage: string;
     whatsappNumber?: string;
-    contactEmail?: string;
-    githubUrl?: string;
-    linkedinUrl?: string;
+    contactEmail?: string | null;
+    githubUrl?: string | null;
+    linkedinUrl?: string | null;
 };
 
 type AboutProps = {
