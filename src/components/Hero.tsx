@@ -8,6 +8,7 @@ type SettingsProps = {
     subtext: string;
     profileImage: string;
     whatsappNumber?: string;
+    contactEmail?: string;
 };
 
 export default function Hero({ settings }: { settings: SettingsProps }) {
@@ -34,13 +35,13 @@ export default function Hero({ settings }: { settings: SettingsProps }) {
                     </p>
                 </div>
 
-                {formattedNumber && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1 }}
-                        className="pt-8"
-                    >
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    className="pt-8 flex flex-wrap items-center gap-4"
+                >
+                    {formattedNumber && (
                         <a
                             href={`https://wa.me/${formattedNumber}`}
                             target="_blank"
@@ -52,8 +53,19 @@ export default function Hero({ settings }: { settings: SettingsProps }) {
                             </svg>
                             <span>Chat on WhatsApp</span>
                         </a>
-                    </motion.div>
-                )}
+                    )}
+                    {settings.contactEmail && (
+                        <a
+                            href={`mailto:${settings.contactEmail}`}
+                            className="inline-flex items-center space-x-2 bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-full font-bold transition transform hover:scale-105"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                            <span>Email Me</span>
+                        </a>
+                    )}
+                </motion.div>
             </motion.div>
 
             {/* Profile Image with Classic Portrait Oval Masking */}

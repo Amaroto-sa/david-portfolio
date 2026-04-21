@@ -12,6 +12,7 @@ type SettingsFormProps = {
         subtext: string;
         profileImage: string;
         whatsappNumber: string;
+        contactEmail: string;
     };
 };
 
@@ -73,6 +74,18 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
                     defaultValue={settings.whatsappNumber}
                     className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
                     placeholder="+2349045729555"
+                />
+            </div>
+
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Contact Email (Home Banner)</label>
+                <input
+                    name="contactEmail"
+                    required
+                    defaultValue={settings.contactEmail}
+                    type="email"
+                    className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
+                    placeholder="hello@example.com"
                 />
             </div>
 

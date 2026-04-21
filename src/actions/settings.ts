@@ -14,7 +14,8 @@ export async function getSiteSettings() {
                 headline: "Welcome to My\nDesign Portfolio",
                 subtext: "Work with me today",
                 profileImage: "/images/profile.jpg",
-                whatsappNumber: "+2349045729555"
+                whatsappNumber: "+2349045729555",
+                contactEmail: "hello@davidcaleb.com"
             }
         });
     }
@@ -28,6 +29,7 @@ export async function updateSiteSettings(formData: FormData, profileImage: strin
     const headline = formData.get("headline") as string;
     const subtext = formData.get("subtext") as string;
     const whatsappNumber = formData.get("whatsappNumber") as string;
+    const contactEmail = formData.get("contactEmail") as string;
 
     await prisma.siteSettings.update({
         where: { id },
@@ -36,6 +38,7 @@ export async function updateSiteSettings(formData: FormData, profileImage: strin
             headline,
             subtext,
             whatsappNumber,
+            contactEmail,
             profileImage
         }
     });
