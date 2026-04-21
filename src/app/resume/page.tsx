@@ -1,5 +1,5 @@
 import { getResumeData } from "@/actions/resume";
-import { getProjects } from "@/actions/project";
+import { getProjects } from "@/actions/projects";
 import Link from "next/link";
 import { Metadata } from "next";
 import PrintButton from "@/components/PrintButton";
