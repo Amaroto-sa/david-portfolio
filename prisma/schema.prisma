@@ -33,7 +33,7 @@ model SiteSettings {
   contactEmail   String?
   githubUrl      String?
   linkedinUrl    String?
-  createdAt      DateTime @default(now())
+  createdAt      DateTime? @default(now())
 }
 
 model Inquiry {
