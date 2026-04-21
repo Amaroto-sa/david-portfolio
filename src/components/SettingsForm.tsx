@@ -12,7 +12,9 @@ type SettingsFormProps = {
         subtext: string;
         profileImage: string;
         whatsappNumber: string;
-        contactEmail: string;
+        contactEmail: string | null;
+        githubUrl: string | null;
+        linkedinUrl: string | null;
     };
 };
 
@@ -82,8 +84,7 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
                     <input
                         name="contactEmail"
                         type="email"
-                        required
-                        defaultValue={settings.contactEmail}
+                        defaultValue={settings.contactEmail || ""}
                         className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
                     />
                 </div>
