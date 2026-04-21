@@ -8,7 +8,28 @@ type Testimonial = {
     company: string;
     text: string;
     rating: number;
+    imageUrl?: string | null;
 };
+
+function renderStars(rating: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            stars.push(<span key={i} className="text-yellow-500 text-xl">★</span>);
+        } else if (i - 0.5 <= rating) {
+            // Half star
+            stars.push(
+                <span key={i} className="relative inline-block text-xl">
+                    <span className="absolute overflow-hidden w-1/2 text-yellow-500">★</span>
+                    <span className="text-gray-300 dark:text-gray-800">★</span>
+                </span>
+            );
+        } else {
+            stars.push(<span key={i} className="text-gray-300 dark:text-gray-800 text-xl">★</span>);
+        }
+    }
+    return <div className="flex space-x-1 mb-6 justify-center items-center">{stars} <span className="ml-2 text-sm text-gray-500 font-bold">{rating.toFixed(1)}</span></div>;
+}
 
 export default function Testimonials({ data }: { data: Testimonial[] }) {
     return (
@@ -41,13 +62,17 @@ export default function Testimonials({ data }: { data: Testimonial[] }) {
                                     "{testimonial.text}"
                                 </p>
                             </div>
-                            <div className="flex items-center space-x-3">
-                                <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-800 dark:text-white">
-                                    {testimonial.name.charAt(0)}
-                                </div>
-                                <div>
-                                    <p className="font-bold text-black dark:text-white text-sm">{testimonial.name}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{testimonial.company}</p>
+                            <div className="flex items-center space-x-4">
+                                {testimonial.imageUrl ? (
+                                    <img src={testimonial.imageUrl} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover border border-gray-200 dark:border-gray-800" />
+                                ) : (
+                                    <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-900 flex items-center justify-center text-lg font-bold text-gray-500">
+                                        {testimonial.name.charAt(0)}
+                                    </div>
+                                )}
+                                <div className="text-left">
+                                    <h4 className="font-bold text-black dark:text-white">{testimonial.name}</h4>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.company}</p>
                                 </div>
                             </div>
                         </motion.div>

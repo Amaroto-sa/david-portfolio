@@ -8,6 +8,7 @@ import SkillsMarquee from "../components/SkillsMarquee";
 import Testimonials from "../components/Testimonials";
 import ContactForm from "../components/ContactForm";
 import PricingSection from "../components/PricingSection";
+import FeedbackPopup from "../components/FeedbackPopup";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
 import { getTestimonials } from "@/actions/testimonials";
@@ -128,6 +129,7 @@ export default async function Home() {
             </footer>
 
             <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />
+            <FeedbackPopup />
         </main>
     );
 }

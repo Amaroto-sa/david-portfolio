@@ -1,7 +1,8 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { createTestimonial, updateTestimonial } from "@/actions/testimonials";
+import { CldUploadWidget } from "next-cloudinary";
 
 type Props = {
     mode?: "create" | "edit";
@@ -11,15 +12,19 @@ type Props = {
         company: string;
         text: string;
         rating: number;
+        imageUrl?: string | null;
     };
 };
 
 export default function TestimonialForm({ mode = "create", testimonialId, initialData }: Props) {
     const [isPending, startTransition] = useTransition();
+    const [imageUrl, setImageUrl] = useState<string | null>(initialData?.imageUrl || null);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
+        if (imageUrl) formData.set("imageUrl", imageUrl);
+
         startTransition(() => {
             if (mode === "edit" && testimonialId) {
                 updateTestimonial(testimonialId, formData);
@@ -31,6 +36,33 @@ export default function TestimonialForm({ mode = "create", testimonialId, initia
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl bg-black p-8 rounded-lg border border-gray-800">
+            <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Reviewer Profile Image</label>
+                <div className="flex items-center space-x-4">
+                    {imageUrl && (
+                        <img src={imageUrl} alt="Profile" className="w-16 h-16 rounded-full object-cover border border-gray-700" />
+                    )}
+                    <CldUploadWidget
+                        uploadPreset="ml_default"
+                        onSuccess={(result: any) => {
+                            if (result.info?.secure_url) {
+                                setImageUrl(result.info.secure_url);
+                            }
+                        }}
+                    >
+                        {({ open }) => (
+                            <button
+                                type="button"
+                                onClick={() => open?.()}
+                                className="bg-gray-800 text-sm hover:bg-gray-700 text-white font-bold py-2 px-4 rounded border border-gray-700 transition"
+                            >
+                                {imageUrl ? "Change Image" : "Upload Image"}
+                            </button>
+                        )}
+                    </CldUploadWidget>
+                </div>
+            </div>
+
             <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Reviewer Name</label>
                 <input
