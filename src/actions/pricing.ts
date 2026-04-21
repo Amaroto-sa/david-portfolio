@@ -9,13 +9,17 @@ export async function getPricingPlans() {
     });
 
     if (!plans || plans.length === 0) {
-        plans = await prisma.pricingPlan.createManyAndReturn({
+        await prisma.pricingPlan.createMany({
             data: [
                 { name: "Basic", price: "$100", order: 1 },
                 { name: "Pro", price: "$150", order: 2 },
                 { name: "Premium", price: "$300", order: 3 },
                 { name: "Ultra", price: "$600", order: 4 }
             ]
+        });
+
+        plans = await prisma.pricingPlan.findMany({
+            orderBy: { order: 'asc' }
         });
     }
 
