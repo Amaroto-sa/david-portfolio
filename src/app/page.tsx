@@ -12,6 +12,7 @@ import FeedbackPopup from "../components/FeedbackPopup";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
 import { getTestimonials } from "@/actions/testimonials";
+import { getPricingPlans } from "@/actions/pricing";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -19,6 +20,7 @@ export default async function Home() {
     let projects = await getProjects();
     const settings = await getSiteSettings();
     let testimonials = await getTestimonials();
+    const pricingPlans = await getPricingPlans();
 
     if (!testimonials || testimonials.length === 0) {
         testimonials = [
@@ -121,7 +123,7 @@ export default async function Home() {
 
             <Testimonials data={testimonials} />
             <WhyChooseMe />
-            <PricingSection />
+            <PricingSection plans={pricingPlans} />
             <ContactForm />
             <CtaSection whatsappNumber={settings.whatsappNumber} />
 
@@ -129,6 +131,10 @@ export default async function Home() {
                 <p>&copy; {new Date().getFullYear()} David Caleb.</p>
                 <span className="hidden md:inline">•</span>
                 <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
+                <span className="hidden md:inline">•</span>
+                <p>
+                    Powered by <a href="https://fixhubtech.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition font-bold">FixHub Technology</a>
+                </p>
             </footer>
 
             <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />
