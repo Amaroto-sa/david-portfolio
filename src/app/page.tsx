@@ -100,7 +100,6 @@ export default async function Home() {
             }
         ];
     }
-    const settings = await getSiteSettings();
 
     return (
         <main className="relative bg-white dark:bg-black transition-colors duration-500">
