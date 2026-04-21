@@ -66,27 +66,51 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
                 />
             </div>
 
-            <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp Number (For Floating Button)</label>
-                <input
-                    name="whatsappNumber"
-                    required
-                    defaultValue={settings.whatsappNumber}
-                    className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
-                    placeholder="+2349045729555"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">WhatsApp Number (e.g. +234...)</label>
+                    <input
+                        name="whatsappNumber"
+                        required
+                        defaultValue={settings.whatsappNumber}
+                        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Contact Email</label>
+                    <input
+                        name="contactEmail"
+                        type="email"
+                        required
+                        defaultValue={settings.contactEmail}
+                        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
+                    />
+                </div>
             </div>
 
-            <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Contact Email (Home Banner)</label>
-                <input
-                    name="contactEmail"
-                    required
-                    defaultValue={settings.contactEmail}
-                    type="email"
-                    className="w-full bg-gray-900 border border-gray-700 rounded p-2 text-white focus:border-white focus:outline-none transition"
-                    placeholder="hello@example.com"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">GitHub URL</label>
+                    <input
+                        name="githubUrl"
+                        type="url"
+                        placeholder="https://github.com/yourusername"
+                        defaultValue={settings.githubUrl || ""}
+                        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">LinkedIn URL</label>
+                    <input
+                        name="linkedinUrl"
+                        type="url"
+                        placeholder="https://linkedin.com/in/yourusername"
+                        defaultValue={settings.linkedinUrl || ""}
+                        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
+                    />
+                </div>
             </div>
 
             <div>

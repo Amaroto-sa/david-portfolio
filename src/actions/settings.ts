@@ -6,16 +6,17 @@ import { revalidatePath } from "next/cache";
 export async function getSiteSettings() {
     let settings = await prisma.siteSettings.findFirst();
 
-    // If no settings exist yet, create default
     if (!settings) {
         settings = await prisma.siteSettings.create({
             data: {
                 name: "David Caleb",
-                headline: "Welcome to My\nDesign Portfolio",
-                subtext: "Work with me today",
+                headline: "We build websites that bring real customers",
+                subtext: "I’m David Caleb, I help businesses scale aggressively through high-converting web applications.",
                 profileImage: "/images/profile.jpg",
                 whatsappNumber: "+2349045729555",
-                contactEmail: "hello@davidcaleb.com"
+                contactEmail: "hello@example.com",
+                githubUrl: "https://github.com",
+                linkedinUrl: "https://linkedin.com"
             }
         });
     }
@@ -23,25 +24,28 @@ export async function getSiteSettings() {
     return settings;
 }
 
-export async function updateSiteSettings(formData: FormData, profileImage: string) {
-    const id = formData.get("id") as string;
+export async function updateSiteSettings(formData: FormData) {
     const name = formData.get("name") as string;
     const headline = formData.get("headline") as string;
     const subtext = formData.get("subtext") as string;
+    const profileImage = formData.get("profileImage") as string;
     const whatsappNumber = formData.get("whatsappNumber") as string;
     const contactEmail = formData.get("contactEmail") as string;
+    const githubUrl = formData.get("githubUrl") as string;
+    const linkedinUrl = formData.get("linkedinUrl") as string;
 
-    await prisma.siteSettings.update({
-        where: { id },
-        data: {
-            name,
-            headline,
-            subtext,
-            whatsappNumber,
-            contactEmail,
-            profileImage
-        }
-    });
+    const existing = await prisma.siteSettings.findFirst();
+
+    if (existing) {
+        await prisma.siteSettings.update({
+            where: { id: existing.id },
+            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl }
+        });
+    } else {
+        await prisma.siteSettings.create({
+            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl }
+        });
+    }
 
     revalidatePath("/");
     revalidatePath("/admin/settings");

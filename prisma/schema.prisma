@@ -30,8 +30,10 @@ model SiteSettings {
   subtext        String   @default("I’m David Caleb, I help small businesses grow online with clean, modern websites")
   profileImage   String   @default("/images/profile.jpg")
   whatsappNumber String   @default("+2349045729555")
-  contactEmail   String   @default("hello@davidcaleb.com")
-  updatedAt      DateTime @updatedAt
+  contactEmail   String?
+  githubUrl      String?
+  linkedinUrl    String?
+  createdAt      DateTime @default(now())
 }
 
 model Inquiry {
