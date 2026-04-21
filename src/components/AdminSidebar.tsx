@@ -70,6 +70,22 @@ export default function AdminSidebar({ userName }: { userName: string }) {
                         </svg>
                         <span>Pricing</span>
                     </Link>
+                    <Link href="/admin/about" onClick={closeSidebar} className={`flex items-center space-x-3 transition ${pathname === "/admin/about" ? "text-green-500 font-bold" : "text-gray-400 hover:text-white"}`}>
+                        <span className="text-xl ml-1 mr-1">🧑‍💻</span>
+                        <span>About Modal</span>
+                    </Link>
+                    <Link href="/admin/resume" onClick={closeSidebar} className={`flex items-center space-x-3 transition ${pathname === "/admin/resume" ? "text-green-500 font-bold" : "text-gray-400 hover:text-white"}`}>
+                        <span className="text-xl ml-1 mr-1">📄</span>
+                        <span>Resume Data</span>
+                    </Link>
+                    <Link href="/admin/faqs" onClick={closeSidebar} className={`flex items-center space-x-3 transition ${pathname === "/admin/faqs" ? "text-green-500 font-bold" : "text-gray-400 hover:text-white"}`}>
+                        <span className="text-xl ml-1 mr-1">❓</span>
+                        <span>FAQs</span>
+                    </Link>
+                    <Link href="/admin/process" onClick={closeSidebar} className={`flex items-center space-x-3 transition ${pathname === "/admin/process" ? "text-green-500 font-bold" : "text-gray-400 hover:text-white"}`}>
+                        <span className="text-xl ml-1 mr-1">🔄</span>
+                        <span>Workflow</span>
+                    </Link>
                     <Link href="/admin/inquiries" onClick={closeSidebar} className={`flex items-center space-x-3 transition ${pathname === "/admin/inquiries" ? "text-green-500 font-bold" : "text-gray-400 hover:text-white"}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
