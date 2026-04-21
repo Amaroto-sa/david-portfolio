@@ -78,15 +78,15 @@ export default async function ResumePage() {
                                     <div key={project.id} className="border border-gray-200 dark:border-gray-800 p-6 rounded-lg print:border-gray-300 print:p-4">
                                         <div className="flex justify-between items-center mb-2">
                                             <h3 className="text-lg font-bold text-black dark:text-white print:text-black">{project.title}</h3>
-                                            {project.link && (
-                                                <a href={project.link} target="_blank" className="text-sm text-blue-500 hover:underline print:hidden">View Project</a>
+                                            {project.slug && (
+                                                <a href={`/project/${project.slug}`} target="_blank" className="text-sm text-blue-500 hover:underline print:hidden">View Project</a>
                                             )}
                                         </div>
                                         <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm print:text-gray-800">{project.description}</p>
                                         <div className="flex flex-wrap gap-2 print:gap-1">
-                                            {project.tags.map((tag: string) => (
-                                                <span key={tag} className="px-2 py-1 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded print:bg-gray-100 print:text-gray-800">
-                                                    {tag}
+                                            {project.categories.map((category: string) => (
+                                                <span key={category} className="px-2 py-1 text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded print:bg-gray-100 print:text-gray-800">
+                                                    {category}
                                                 </span>
                                             ))}
                                         </div>
