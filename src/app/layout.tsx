@@ -3,6 +3,8 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
 import ThemeToggle from "@/components/ThemeToggle";
+import CustomCursor from "@/components/CustomCursor";
+import NoiseOverlay from "@/components/NoiseOverlay";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -22,6 +24,8 @@ export default function RootLayout({
         <html lang="en" className="dark">
             <body className={`${inter.variable} ${playfair.variable} font-sans bg-white dark:bg-black text-black dark:text-white transition-colors duration-500`} suppressHydrationWarning>
                 <ThemeToggle />
+                <CustomCursor />
+                <NoiseOverlay />
                 <PageTransition>
                     {children}
                 </PageTransition>
