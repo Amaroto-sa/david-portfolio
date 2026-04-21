@@ -10,11 +10,49 @@ import ContactForm from "../components/ContactForm";
 import PricingSection from "../components/PricingSection";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
+import { getTestimonials } from "@/actions/testimonials";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function Home() {
     let projects = await getProjects();
+    const settings = await getSiteSettings();
+    let testimonials = await getTestimonials();
+
+    if (!testimonials || testimonials.length === 0) {
+        testimonials = [
+            {
+                id: "t1",
+                name: "Client",
+                company: "Verified Review",
+                text: "Clean design and fast delivery. Highly recommend.",
+                rating: 5,
+                isVisible: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                id: "t2",
+                name: "Client",
+                company: "Verified Review",
+                text: "Very professional and easy to work with.",
+                rating: 5,
+                isVisible: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                id: "t3",
+                name: "Client",
+                company: "Verified Review",
+                text: "Great communication and quality work.",
+                rating: 5,
+                isVisible: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ];
+    }
 
     if (!projects || projects.length === 0) {
         projects = [
@@ -78,7 +116,7 @@ export default async function Home() {
                 <MasonryGallery initialProjects={projects} />
             </div>
 
-            <Testimonials />
+            <Testimonials data={testimonials} />
             <WhyChooseMe />
             <PricingSection />
             <ContactForm />

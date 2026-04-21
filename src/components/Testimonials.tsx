@@ -2,28 +2,15 @@
 
 import { motion } from "framer-motion";
 
-const testimonials = [
-    {
-        name: "Client",
-        company: "Verified Review",
-        text: "Clean design and fast delivery. Highly recommend.",
-        rating: 5
-    },
-    {
-        name: "Client",
-        company: "Verified Review",
-        text: "Very professional and easy to work with.",
-        rating: 5
-    },
-    {
-        name: "Client",
-        company: "Verified Review",
-        text: "Great communication and quality work.",
-        rating: 5
-    }
-];
+type Testimonial = {
+    id: string;
+    name: string;
+    company: string;
+    text: string;
+    rating: number;
+};
 
-export default function Testimonials() {
+export default function Testimonials({ data }: { data: Testimonial[] }) {
     return (
         <section className="py-24 px-8 lg:px-24 bg-white dark:bg-black">
             <div className="max-w-6xl mx-auto">
@@ -33,9 +20,9 @@ export default function Testimonials() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, idx) => (
+                    {data.map((testimonial, idx) => (
                         <motion.div
-                            key={idx}
+                            key={testimonial.id}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

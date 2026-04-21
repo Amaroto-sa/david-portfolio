@@ -41,3 +41,14 @@ model Inquiry {
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
+model Testimonial {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @default("Client")
+  company   String   @default("Verified Review")
+  text      String
+  rating    Int      @default(5)
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
