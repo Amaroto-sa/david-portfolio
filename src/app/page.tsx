@@ -28,6 +28,7 @@ export default async function Home() {
                 company: "Verified Review",
                 text: "Clean design and fast delivery. Highly recommend.",
                 rating: 5,
+                imageUrl: null,
                 isVisible: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
@@ -38,6 +39,7 @@ export default async function Home() {
                 company: "Verified Review",
                 text: "Very professional and easy to work with.",
                 rating: 5,
+                imageUrl: null,
                 isVisible: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
@@ -48,6 +50,7 @@ export default async function Home() {
                 company: "Verified Review",
                 text: "Great communication and quality work.",
                 rating: 5,
+                imageUrl: null,
                 isVisible: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
