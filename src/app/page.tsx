@@ -9,10 +9,15 @@ import Testimonials from "../components/Testimonials";
 import ContactForm from "../components/ContactForm";
 import PricingSection from "../components/PricingSection";
 import FeedbackPopup from "../components/FeedbackPopup";
+import ProcessTimeline from "../components/ProcessTimeline";
+import FaqAccordion from "../components/FaqAccordion";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
 import { getTestimonials } from "@/actions/testimonials";
 import { getPricingPlans } from "@/actions/pricing";
+import { getAboutSettings } from "@/actions/about";
+import { getProcessSteps } from "@/actions/process";
+import { getFaqItems } from "@/actions/faq";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -21,6 +26,9 @@ export default async function Home() {
     const settings = await getSiteSettings();
     let testimonials = await getTestimonials();
     const pricingPlans = await getPricingPlans();
+    const aboutSettings = await getAboutSettings();
+    const processSteps = await getProcessSteps();
+    const faqItems = await getFaqItems();
 
     if (!testimonials || testimonials.length === 0) {
         testimonials = [
@@ -109,7 +117,7 @@ export default async function Home() {
 
     return (
         <main className="relative bg-white dark:bg-black transition-colors duration-500">
-            <Hero settings={settings} />
+            <Hero settings={settings} aboutSettings={aboutSettings} />
             <SkillsMarquee />
             <ServicesSection />
 
@@ -123,7 +131,9 @@ export default async function Home() {
 
             <Testimonials data={testimonials} />
             <WhyChooseMe />
+            <ProcessTimeline steps={processSteps} />
             <PricingSection plans={pricingPlans} />
+            <FaqAccordion faqs={faqItems} />
             <ContactForm />
             <CtaSection whatsappNumber={settings.whatsappNumber} />
 
