@@ -68,19 +68,22 @@ export default function Hero({ settings }: { settings: SettingsProps }) {
                 </motion.div>
             </motion.div>
 
-            {/* Profile Image with Classic Portrait Oval Masking */}
+            {/* Profile Image with Classic Portrait Oval Masking & Ash Grey Aesthetic */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="flex-1 flex justify-center md:justify-end mt-12 md:mt-0"
+                className="flex-1 flex justify-center md:justify-end mt-12 md:mt-0 relative"
             >
-                <div className="relative w-64 h-80 md:w-80 md:h-[28rem] overflow-hidden rounded-[50%] border border-gray-800 shadow-2xl">
+                {/* Ash Grey Aesthetic Glow */}
+                <div className="absolute w-72 h-72 md:w-96 md:h-96 bg-gray-500/20 rounded-full blur-3xl -z-10 mix-blend-screen" />
+
+                <div className="relative w-64 h-80 md:w-80 md:h-[28rem] overflow-hidden rounded-[50%] border-2 border-gray-700 shadow-2xl shadow-gray-900">
                     <Image
                         src={settings.profileImage}
                         alt={`${settings.name} - Profile`}
                         fill
-                        className="object-cover"
+                        className="object-cover grayscale hover:grayscale-0 transition-all duration-700 contrast-125"
                         priority
                         sizes="(max-width: 768px) 256px, 320px"
                     />
