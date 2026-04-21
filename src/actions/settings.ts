@@ -24,11 +24,10 @@ export async function getSiteSettings() {
     return settings;
 }
 
-export async function updateSiteSettings(formData: FormData) {
+export async function updateSiteSettings(formData: FormData, profileImage: string) {
     const name = formData.get("name") as string;
     const headline = formData.get("headline") as string;
     const subtext = formData.get("subtext") as string;
-    const profileImage = formData.get("profileImage") as string;
     const whatsappNumber = formData.get("whatsappNumber") as string;
     const contactEmail = formData.get("contactEmail") as string;
     const githubUrl = formData.get("githubUrl") as string;
