@@ -52,19 +52,27 @@ export default function FeedbackPopup() {
                     }} className="space-y-4">
 
                         <div>
-                            <label className="text-sm text-gray-500 dark:text-gray-400">Your Rating</label>
-                            <div className="flex items-center space-x-1 mt-1">
-                                <input
-                                    type="number"
-                                    name="rating"
-                                    min="1" max="5" step="0.5"
-                                    value={rating}
-                                    onChange={(e) => setRating(parseFloat(e.target.value))}
-                                    className="w-16 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded p-1 text-center font-bold dark:text-white"
-                                />
-                                <span className="text-sm text-gray-400">/ 5.0</span>
+                            <label className="text-sm text-gray-500 dark:text-gray-400 block mb-2">Your Rating</label>
+                            <input type="hidden" name="rating" value={rating} />
+                            <div className="flex items-center space-x-1">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <button
+                                        type="button"
+                                        key={star}
+                                        onClick={() => setRating(star)}
+                                        className="focus:outline-none hover:scale-110 transition-transform"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            className={`w-8 h-8 ${star <= rating ? "text-yellow-500" : "text-gray-300 dark:text-gray-700"}`}
+                                        >
+                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                ))}
                             </div>
-                            <input type="range" min="1" max="5" step="0.5" value={rating} onChange={(e) => setRating(parseFloat(e.target.value))} className="w-full mt-2" />
                         </div>
 
                         <div>
