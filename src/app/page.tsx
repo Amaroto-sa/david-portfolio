@@ -7,6 +7,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import SkillsMarquee from "../components/SkillsMarquee";
 import Testimonials from "../components/Testimonials";
 import ContactForm from "../components/ContactForm";
+import PricingSection from "../components/PricingSection";
 import { getProjects } from "@/actions/projects";
 import { getSiteSettings } from "@/actions/settings";
 
@@ -79,8 +80,15 @@ export default async function Home() {
 
             <Testimonials />
             <WhyChooseMe />
+            <PricingSection />
             <ContactForm />
             <CtaSection whatsappNumber={settings.whatsappNumber} />
+
+            <footer className="text-center py-8 bg-black border-t border-gray-900 flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 text-sm text-gray-500">
+                <p>&copy; {new Date().getFullYear()} David Caleb.</p>
+                <span className="hidden md:inline">•</span>
+                <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
+            </footer>
 
             <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />
         </main>

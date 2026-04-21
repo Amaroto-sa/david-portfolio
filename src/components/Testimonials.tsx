@@ -4,9 +4,21 @@ import { motion } from "framer-motion";
 
 const testimonials = [
     {
-        name: "Verified Client",
-        company: "Small Business Owner",
-        text: "Very clean design and fast delivery. Highly recommend.",
+        name: "Client",
+        company: "Verified Review",
+        text: "Clean design and fast delivery. Highly recommend.",
+        rating: 5
+    },
+    {
+        name: "Client",
+        company: "Verified Review",
+        text: "Very professional and easy to work with.",
+        rating: 5
+    },
+    {
+        name: "Client",
+        company: "Verified Review",
+        text: "Great communication and quality work.",
         rating: 5
     }
 ];
@@ -17,7 +29,7 @@ export default function Testimonials() {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <p className="text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase text-sm mb-2">★ Client Reviews</p>
-                    <h2 className="text-3xl md:text-5xl font-serif text-black dark:text-white">What People Say</h2>
+                    <h2 className="text-3xl md:text-5xl font-serif text-black dark:text-white">What clients say</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
