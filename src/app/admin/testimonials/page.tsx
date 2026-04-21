@@ -35,7 +35,9 @@ export default async function TestimonialsAdminPage() {
                                     <Link href={`/admin/testimonials/edit/${t.id}`} className="text-blue-400 hover:underline">
                                         Edit
                                     </Link>
-                                    <DeleteButton id={t.id} deleteAction={deleteTestimonial} confirmMessage="Delete this testimonial?" />
+                                    <form action={deleteTestimonial.bind(null, t.id)} className="inline-block">
+                                        <DeleteButton />
+                                    </form>
                                 </td>
                             </tr>
                         ))}
