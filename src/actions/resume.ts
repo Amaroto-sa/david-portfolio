@@ -20,17 +20,17 @@ export async function getResumeData() {
                         description: "Architecting and deploying enterprise-grade platforms. Leading front-end and back-end integration, scaling infrastructure, and optimizing critical user paths to maximize lead conversion."
                     },
                     {
-                        role: "Full-Stack Developer",
+                        role: "Student & Full-Stack Developer",
                         company: "Freelance / Independent",
-                        duration: "2021 - 2023",
-                        description: "Built custom applications and landing pages for SMEs. Engineered robust CMS solutions, managed server deployments, and spearheaded technical SEO initiatives."
+                        duration: "2021 - Present",
+                        description: "Balancing high-level technical coursework alongside building custom business applications. Engineered robust CMS solutions, managed server deployments, and spearheaded technical SEO initiatives."
                     }
                 ],
                 education: [
                     {
-                        degree: "B.Sc. Computer Science (Or Equivalent Tech Certification)",
-                        school: "Tech University",
-                        year: "2021"
+                        degree: "Currently Pursuing Degree / Studies (19 Years Old)",
+                        school: "Local University / College",
+                        year: "Expected Graduation: TBA"
                     }
                 ],
                 skills: [

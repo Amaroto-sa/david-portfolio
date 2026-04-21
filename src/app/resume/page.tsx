@@ -1,6 +1,7 @@
 import { getResumeData } from "@/actions/resume";
 import Link from "next/link";
 import { Metadata } from "next";
+import PrintButton from "@/components/PrintButton";
 
 export const metadata: Metadata = {
     title: "Resume | David Caleb",
@@ -26,9 +27,7 @@ export default async function ResumePage() {
                         <h1 className="text-4xl md:text-6xl font-serif font-bold text-black dark:text-white tracking-tight">{resume.fullName}</h1>
                         <p className="text-xl md:text-2xl text-green-600 dark:text-green-500 mt-2 font-medium">{resume.role}</p>
                     </div>
-                    <button className="mt-6 md:mt-0 px-6 py-3 border-2 border-black dark:border-white rounded-full font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition">
-                        Download PDF
-                    </button>
+                    <PrintButton />
                 </div>
 
                 <div className="border-t border-gray-200 dark:border-gray-800 pt-12 space-y-16">
