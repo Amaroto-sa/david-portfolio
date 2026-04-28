@@ -11,7 +11,7 @@ export default function FeedbackPopup() {
 
     if (isSubmitted) {
         return (
-            <div className="fixed bottom-6 left-6 z-50 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3">
+            <div className="fixed bottom-28 right-8 z-50 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
@@ -22,7 +22,7 @@ export default function FeedbackPopup() {
     }
 
     return (
-        <div className="fixed bottom-6 left-6 z-50">
+        <div className="fixed bottom-28 right-8 z-50">
             {!isOpen ? (
                 <button
                     onClick={() => setIsOpen(true)}
@@ -34,7 +34,7 @@ export default function FeedbackPopup() {
                     <span>Rate Service</span>
                 </button>
             ) : (
-                <div className="bg-white dark:bg-black w-80 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col p-6 animate-in fade-in slide-in-from-bottom-2">
+                <div className="bg-white dark:bg-black w-80 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col p-6 animate-in fade-in slide-in-from-bottom-2 mb-2">
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="font-bold text-lg dark:text-white">Leave Feedback</h3>
                         <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
