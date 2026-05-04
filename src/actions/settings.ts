@@ -14,6 +14,8 @@ export async function getSiteSettings() {
                 subtext: "I’m David Caleb, a Website Developer and Graphic Designer helping businesses attract customers and grow online.",
                 profileImage: "/images/profile.jpg",
                 whatsappNumber: "+2349045729555",
+                showWhatsApp: true,
+                showRateService: true,
                 contactEmail: "david.caleb.vl@gmail.com",
                 githubUrl: "https://github.com/davidcaleb",
                 linkedinUrl: "https://linkedin.com/in/davidcaleb"
@@ -32,17 +34,19 @@ export async function updateSiteSettings(formData: FormData, profileImage: strin
     const contactEmail = formData.get("contactEmail") as string;
     const githubUrl = formData.get("githubUrl") as string;
     const linkedinUrl = formData.get("linkedinUrl") as string;
+    const showWhatsApp = formData.get("showWhatsApp") === "on";
+    const showRateService = formData.get("showRateService") === "on";
 
     const existing = await prisma.siteSettings.findFirst();
 
     if (existing) {
         await prisma.siteSettings.update({
             where: { id: existing.id },
-            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl }
+            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl, showWhatsApp, showRateService }
         });
     } else {
         await prisma.siteSettings.create({
-            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl }
+            data: { name, headline, subtext, profileImage, whatsappNumber, contactEmail, githubUrl, linkedinUrl, showWhatsApp, showRateService }
         });
     }
 

@@ -30,6 +30,8 @@ model SiteSettings {
   subtext        String   @default("I’m David Caleb, I help small businesses grow online with clean, modern websites")
   profileImage   String   @default("/images/profile.jpg")
   whatsappNumber String   @default("+2349045729555")
+  showWhatsApp   Boolean  @default(true)
+  showRateService Boolean @default(true)
   contactEmail   String?
   githubUrl      String?
   linkedinUrl    String?

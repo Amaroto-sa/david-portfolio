@@ -146,9 +146,10 @@ export default async function Home() {
                     Powered by <a href="https://fixhubtech.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition font-bold">FixHub Technology</a>
                 </p>
             </footer>
-
-            <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />
-            <FeedbackPopup />
+            {settings.showWhatsApp !== false && (
+                <FloatingWhatsApp phoneNumber={settings.whatsappNumber} />
+            )}
+            {settings.showRateService !== false && <FeedbackPopup />}
         </main>
     );
 }

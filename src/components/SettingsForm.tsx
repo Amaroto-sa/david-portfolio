@@ -15,6 +15,8 @@ type SettingsFormProps = {
         contactEmail: string | null;
         githubUrl: string | null;
         linkedinUrl: string | null;
+        showWhatsApp: boolean;
+        showRateService: boolean;
     };
 };
 
@@ -111,6 +113,30 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
                         defaultValue={settings.linkedinUrl || ""}
                         className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-white focus:outline-none transition"
                     />
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-900/50 p-4 rounded border border-gray-800">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h3 className="text-white font-medium">Show Floating WhatsApp</h3>
+                        <p className="text-gray-400 text-sm">Enable or disable the floating WhatsApp button on the site</p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="showWhatsApp" defaultChecked={settings.showWhatsApp} className="sr-only peer" />
+                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                    </label>
+                </div>
+
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h3 className="text-white font-medium">Show Rate Service</h3>
+                        <p className="text-gray-400 text-sm">Enable or disable the floating rate service popup</p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="showRateService" defaultChecked={settings.showRateService} className="sr-only peer" />
+                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                    </label>
                 </div>
             </div>
 
