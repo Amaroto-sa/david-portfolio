@@ -10,49 +10,50 @@ export async function getResumeData() {
         resume = await prisma.resumeData.create({
             data: {
                 fullName: "David Caleb",
-                role: "Full-Stack Software Engineer & UI/UX Specialist",
-                summary: "Innovative Full-Stack Engineer with a proven track record at FixHub Technology. Specializing in highly scalable React/Next.js architectures, complex backend integrations, and seamless user experiences. Passionate about driving business growth through modern tech.",
+                role: "Website Developer & Graphic Designer",
+                summary: "Results-driven Website Developer and Graphic Designer with 2+ years of hands-on experience delivering digital solutions for real clients through FixHub Technology. I build clean, responsive websites and create compelling visual content that helps businesses attract customers and grow online. Self-managed, deadline-driven, and fully equipped for remote collaboration across time zones.",
                 experiences: [
                     {
-                        role: "Lead Software Engineer",
+                        role: "Founder & Lead Developer",
                         company: "FixHub Technology",
                         duration: "2023 - Present",
-                        description: "Architecting and deploying enterprise-grade platforms. Leading front-end and back-end integration, scaling infrastructure, and optimizing critical user paths to maximize lead conversion."
+                        description: "Founded and independently operate a digital services agency delivering website development and graphic design to clients. Designed and developed 5+ client websites from scratch including service pages, landing pages, and appointment booking systems. Created visual branding identities for 10+ small businesses."
                     },
                     {
-                        role: "Student & Full-Stack Developer",
-                        company: "Freelance / Independent",
-                        duration: "2021 - Present",
-                        description: "Balancing high-level technical coursework alongside building custom business applications. Engineered robust CMS solutions, managed server deployments, and spearheaded technical SEO initiatives."
+                        role: "Web Design & Creative Intern",
+                        company: "TechVision Creative",
+                        duration: "2022 - 2023",
+                        description: "Supported senior designers in creating website layouts using Figma and WordPress. Assisted in designing social media marketing assets and branding materials. Learned to translate UI/UX designs into functional code using HTML and CSS."
                     }
                 ],
                 education: [
                     {
-                        degree: "Currently Pursuing Degree / Studies (19 Years Old)",
-                        school: "Local University / College",
-                        year: "Expected Graduation: TBA"
+                        degree: "West African Senior School Certificate (WASSCE)",
+                        school: "Anambra State, Nigeria",
+                        year: "Completed 2024"
+                    },
+                    {
+                        degree: "Responsive Web Design Certificate",
+                        school: "freeCodeCamp",
+                        year: "Self-Directed"
                     }
                 ],
                 skills: [
                     {
-                        category: "Frontend Development",
-                        skillsArray: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js", "Redux", "HTML5/CSS3"]
+                        category: "Development",
+                        skillsArray: ["HTML5", "CSS3", "JavaScript", "Responsive Web Design", "React (Basic)", "WordPress", "Webflow"]
                     },
                     {
-                        category: "Backend Development",
-                        skillsArray: ["Node.js", "Express", "NestJS", "Python", "Django", "PHP", "Laravel", "GraphQL", "REST APIs"]
+                        category: "Design",
+                        skillsArray: ["Figma", "Adobe XD", "Graphic Design", "Logo Design", "Branding", "Social Media Visuals", "Canva"]
                     },
                     {
-                        category: "Database & Cloud",
-                        skillsArray: ["MongoDB", "PostgreSQL", "MySQL", "Prisma ORM", "AWS", "Vercel", "Docker", "Firebase", "Redis"]
+                        category: "Tools & Collaboration",
+                        skillsArray: ["Git", "GitHub", "Vercel", "Google Workspace", "Trello", "Notion", "Slack", "Zoom"]
                     },
                     {
-                        category: "UI/UX & Design",
-                        skillsArray: ["Figma", "Adobe XD", "Prototyping", "Wireframing", "User Research", "Responsive Design"]
-                    },
-                    {
-                        category: "Mobile & DevOps",
-                        skillsArray: ["React Native", "Flutter", "Git/GitHub", "CI/CD Pipelines", "Jest Testing"]
+                        category: "Soft Skills",
+                        skillsArray: ["Client Communication", "Remote Collaboration", "Time Management", "Self-Motivated", "Detail-Oriented"]
                     }
                 ]
             }

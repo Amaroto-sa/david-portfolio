@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const skills = [
-    "Figma", "UI/UX Design", "Wireframing", "Prototyping", "Adobe Photoshop",
+    "Figma", "UI/UX Design", "Graphic Design", "Logo Design", "Adobe Photoshop",
     "Illustrator", "Brand Identity", "Web Design", "Responsive Layouts",
-    "Tailwind CSS", "React", "Next.js", "Creative Direction", "Typography"
+    "HTML5 / CSS3", "WordPress", "Webflow", "Canva", "Typography"
 ];
 
 export default function SkillsMarquee() {

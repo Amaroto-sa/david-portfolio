@@ -50,10 +50,14 @@ export default function Hero({ settings, aboutSettings }: { settings: SettingsPr
                         </span>
                     ))}
                 </h1>
-                <div className="flex items-center space-x-4 pt-6">
+                <div className="flex flex-col items-start space-y-4 pt-6">
                     <p className="text-gray-300 font-sans text-sm md:text-base md:max-w-md">
                         {settings.subtext}
                     </p>
+                    <div className="inline-flex items-center space-x-2 bg-gray-900 border border-gray-800 rounded-full px-4 py-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span className="text-xs text-gray-300 font-medium tracking-wide uppercase">🌍 Remote-Ready · EST / GMT / WAT</span>
+                    </div>
                 </div>
 
                 <motion.div

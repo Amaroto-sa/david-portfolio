@@ -11,12 +11,12 @@ export async function getSiteSettings() {
             data: {
                 name: "David Caleb",
                 headline: "We build websites that bring real customers",
-                subtext: "I’m David Caleb, I help businesses scale aggressively through high-converting web applications.",
+                subtext: "I’m David Caleb, a Website Developer and Graphic Designer helping businesses attract customers and grow online.",
                 profileImage: "/images/profile.jpg",
                 whatsappNumber: "+2349045729555",
-                contactEmail: "hello@example.com",
-                githubUrl: "https://github.com",
-                linkedinUrl: "https://linkedin.com"
+                contactEmail: "david.caleb.vl@gmail.com",
+                githubUrl: "https://github.com/davidcaleb",
+                linkedinUrl: "https://linkedin.com/in/davidcaleb"
             }
         });
     }

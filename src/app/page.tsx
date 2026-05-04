@@ -86,9 +86,9 @@ export default async function Home() {
             },
             {
                 id: "mock2",
-                title: "Ultra Real Estate Website (Demo)",
-                slug: "ultra-real-estate",
-                description: "Premium property listing site. Showcases luxury homes with high-resolution image galleries and virtual tours.",
+                title: "Property Display Website",
+                slug: "property-display",
+                description: "Real estate listings platform. Showcases properties with advanced search filters, mobile-first design, and contact forms.",
                 client: "Demo",
                 categories: ["Website Design"],
                 thumbnailUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop",
