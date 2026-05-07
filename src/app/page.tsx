@@ -135,9 +135,7 @@ export default async function Home() {
             <PricingSection plans={pricingPlans} />
             <FaqAccordion faqs={faqItems} />
             <ContactForm />
-            {settings.showWhatsApp !== false && (
-                <CtaSection whatsappNumber={settings.whatsappNumber} />
-            )}
+            <CtaSection whatsappNumber={settings.whatsappNumber} />
 
             <footer className="text-center py-8 bg-black border-t border-gray-900 flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 text-sm text-gray-500">
                 <p>&copy; {new Date().getFullYear()} David Caleb.</p>
