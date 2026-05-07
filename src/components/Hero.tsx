@@ -14,6 +14,7 @@ type SettingsProps = {
     contactEmail?: string | null;
     githubUrl?: string | null;
     linkedinUrl?: string | null;
+    showWhatsApp?: boolean;
 };
 
 type AboutProps = {
@@ -66,7 +67,7 @@ export default function Hero({ settings, aboutSettings }: { settings: SettingsPr
                     transition={{ delay: 1 }}
                     className="pt-8 flex flex-wrap items-center gap-4"
                 >
-                    {formattedNumber && (
+                    {formattedNumber && settings.showWhatsApp !== false && (
                         <MagneticButton>
                             <a
                                 href={`https://wa.me/${formattedNumber}`}
